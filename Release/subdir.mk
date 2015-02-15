@@ -5,9 +5,6 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../SerialDaemon.c \
-../SerialDaemonTest.c \
-../SerialLib8051.c \
-../SerialMsgUtils.c \
 ../alt_functions.c \
 ../become_daemon.c \
 ../error_functions.c \
@@ -17,9 +14,6 @@ C_SRCS += \
 
 OBJS += \
 ./SerialDaemon.o \
-./SerialDaemonTest.o \
-./SerialLib8051.o \
-./SerialMsgUtils.o \
 ./alt_functions.o \
 ./become_daemon.o \
 ./error_functions.o \
@@ -29,9 +23,6 @@ OBJS += \
 
 C_DEPS += \
 ./SerialDaemon.d \
-./SerialDaemonTest.d \
-./SerialLib8051.d \
-./SerialMsgUtils.d \
 ./alt_functions.d \
 ./become_daemon.d \
 ./error_functions.d \
@@ -44,7 +35,7 @@ C_DEPS += \
 %.o: ../%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C Compiler'
-	arm-linux-gnueabihf-gcc -I/usr/arm-linux-gnueabihf/include -I"/home/mbezold/workspace/SerialLib8051" -include"/home/mbezold/workspace/SerialDaemonTest/SerialPacket.h" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	arm-linux-gnueabihf-gcc -I"/home/mbezold/workspace/SerialLib8051" -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

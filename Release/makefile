@@ -22,19 +22,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: SerialDaemonTest
+all: SerialDaemon
 
 # Tool invocations
-SerialDaemonTest: $(OBJS) $(USER_OBJS)
+SerialDaemon: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	arm-linux-gnueabihf-gcc -L/usr/arm-linux-gnueabihf/include/linux -pthread -o "SerialDaemonTest" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-linux-gnueabihf-gcc  -o "SerialDaemon" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) SerialDaemonTest
+	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) SerialDaemon
 	-@echo ' '
 
 .PHONY: all clean dependents
